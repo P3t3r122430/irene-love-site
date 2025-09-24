@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Irene Love ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  <!-- Romantic fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       height: 100vh;
-      background: url('irene.jpg') no-repeat center center/cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -19,22 +24,30 @@
       overflow: hidden;
       color: #fff;
       font-family: 'Playfair Display', serif;
+      position: relative;
     }
-
+    /* Irene's picture as full background but not zoomed */
+    .background-img {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* show full picture without zooming */
+      z-index: -1;
+      background: #000; /* fill borders with black */
+    }
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 70px;
       text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
       margin-bottom: 10px;
     }
-
     #static-message {
       font-family: 'Great Vibes', cursive;
       font-size: 36px;
       margin-top: 10px;
       text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
     }
-
     #changing-message {
       font-size: 28px;
       font-weight: 500;
@@ -43,12 +56,11 @@
       text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
       animation: fadeIn 2s ease-in-out;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
+    /* Floating hearts */
     .hearts {
       position: fixed;
       top: 0;
@@ -58,31 +70,38 @@
       pointer-events: none;
       z-index: 1;
     }
-
     .heart {
       position: absolute;
       color: #ff3366;
       animation: floatUp 5s linear forwards;
       opacity: 0.8;
     }
-
     @keyframes floatUp {
-      from { transform: translateY(100vh) scale(1); opacity: 0.8; }
-      to { transform: translateY(-10vh) scale(0.5); opacity: 0; }
+      from {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.8;
+      }
+      to {
+        transform: translateY(-10vh) scale(0.5);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Irene’s background image -->
+  <img src="irene.jpg" alt="My Beautiful Irene" class="background-img">
+
   <div class="overlay">
     <h1>Irene ❤️</h1>
-    <p id="static-message">The one I cherish forever</p>
+    <p id="static-message">The love of my life</p>
     <p id="changing-message">You are my everything 🌹</p>
   </div>
 
   <div class="hearts"></div>
 
   <script>
-    // Romantic rotating messages
+    // Rotating Romantic Messages
     const messages = [
       "Hey Love ❤️",
       "You make my world brighter 🌸",
@@ -104,8 +123,7 @@
       "You’re unforgettable, my Irene 💭",
       "Thank you for being mine 🙏",
       "Cheers to our love story 🥂",
-      "You are my forever, no expiration ❤️",
-      "My world starts and ends with you 💖" // NEW MESSAGE
+      "You are my forever, no expiration ❤️"
     ];
 
     let index = 0;
@@ -118,7 +136,7 @@
       setTimeout(() => messageEl.style.animation = "", 2000);
     }, 4000);
 
-    // Floating hearts
+    // Floating Hearts
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
